@@ -6,7 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_ENV=development electron .",
     "start-win": "set NODE_ENV=development&& electron .",
-    "dev": "concurrently \"npm run start\" \"cd renderer && npm run dev\"",
+    "dev-win": "set NODE_ENV=development&& electron .",
+    "dev": "concurrently \"npm run start-win\" \"cd renderer && npm run dev\"",
     "build": "cd renderer && npm run build && electron-builder"
   },
   "keywords": [],
