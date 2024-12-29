@@ -1,6 +1,6 @@
 # **School Management System**
 
-🎉 Welcome to the **School Management System**! Manage student records effortlessly in this Electron-powered desktop application. Built with Vue.js, SQLite, and Tailwind CSS, this app combines performance with modern UI/UX aesthetics. 🚀
+🎉 Welcome to the **School Management System**! Manage student records effortlessly in this Electron-powered desktop application. Built with Vue.js, SQLite, and Tailwind CSS, this app combines performance with modern UI/UX aesthetics. 🚀 Hello Its me Axel
 
 ---
 
