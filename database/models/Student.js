@@ -16,7 +16,7 @@ const Student = sequelize.define('Student', {
     unique : true,
   },
   class : {
-    // add constrain with 
+    // add constrain with regex
     type : DataTypes.STRING,
     unique : true,
   },
