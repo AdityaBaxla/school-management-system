@@ -5,8 +5,9 @@
       class="px-4 py-2 bg-blue-500 text-white rounded shadow"
       @click="addStudent"
     >
-      Add Student Not here
+      Add Student
     </button>
+    <button @click="testPing">Test Ping</button>
   </div>
 </template>
 
@@ -16,10 +17,13 @@ export default {
     addStudent() {
       window.electronAPI.sendMessage("Add a new student");
     },
+    testPing() {
+      window.api.test();
+    },
   },
 };
 </script>
 
 <style>
-/* Add custom styles if needed */
+/* Add custom styles if nee ded */
 </style>

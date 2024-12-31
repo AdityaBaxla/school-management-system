@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 
 // database 
@@ -6,6 +6,8 @@ const path = require('path');
 const sequelize = require('../database/sequelize');
 const Student = require('../database/models/Student');
 
+// controller
+const studentController = require('./database/controllers/StudentController');
 let mainWindow;
 
 require('electron-reload')(__dirname, {
@@ -30,6 +32,32 @@ app.on('ready', () => {
     mainWindow.loadFile(path.join(__dirname, '../renderer/dist/index.html')); 
   }
 });
+
+// creating function that handel invoke from preload.js
+app.whenReady().then(() => {
+  ipcMain.handle('test', () => {console.log('test ping') ; return 'test response'})
+
+  // Student Controller Calling
+  ipcMain.handle('student:create', async (_, data) => {
+    return await studentController.createStudent(data);
+  });
+  
+  ipcMain.handle('student:readAll', async () => {
+    return await studentController.getAllStudents();
+  });
+  
+  ipcMain.handle('student:readOne', async (_, id) => {
+    return await studentController.getStudentById(id);
+  });
+  
+  ipcMain.handle('student:update', async (_, id, data) => {
+    return await studentController.updateStudent(id, data);
+  });
+  
+  ipcMain.handle('student:delete', async (_, id) => {
+    return await studentController.deleteStudent(id);
+  });
+})
 
 
 
