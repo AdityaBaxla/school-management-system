@@ -17,7 +17,7 @@ Class.init({
         primaryKey : true,
     },
     standard : DataTypes.STRING(5),
-    section : DataTypes.STRING(1),
-    
+    section : DataTypes.STRING(2),
+
 })
 
