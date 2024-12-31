@@ -7,6 +7,19 @@ const Student = sequelize.define('Student', {
     autoIncrement: true,
     primaryKey: true,
   },
+  folio_number : {
+    type : DataTypes.NUMBER,
+    unique : true,
+  },
+  admission_number : {
+    type : DataTypes.STRING,
+    unique : true,
+  },
+  class : {
+    // add constrain with 
+    type : DataTypes.STRING,
+    unique : true,
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -15,6 +28,7 @@ const Student = sequelize.define('Student', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+
 });
 
 module.exports = Student;
