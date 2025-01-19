@@ -13,14 +13,21 @@
     <RouterLink to="/">home</RouterLink>
     <RouterLink to="/router">test</RouterLink>
     <RouterView />
+    <button @click="addStudent">Add Student</button>
+    <button @click="testPing">Test Ping</button>
+    <Button>Click me</Button>
+    <h1 class="text-3xl font-bold underline">Hello world!</h1>
   </div>
 </template>
 
 <script>
+import { Button } from "@/components/ui/button";
+
 export default {
   methods: {
     addStudent() {
       window.electronAPI.sendMessage("Add a new student");
+      console.log("wow");
     },
     testPing() {
       window.api.test();
