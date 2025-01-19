@@ -1,6 +1,6 @@
 # **School Management System**
 
-🎉 Welcome to the **School Management System**! Manage student records effortlessly in this Electron-powered desktop application. Built with Vue.js, SQLite, and Tailwind CSS, this app combines performance with modern UI/UX aesthetics. 🚀 Hello Its me Axel
+🎉 Welcome to the **School Management System**! Manage student records effortlessly in this Electron-powered desktop application. Built with Vue.js, fSQLite, and Tailwind CSS, this app combines performance with modern UI/UX aesthetics. 🚀 Hello Its me Axel
 
 ---
 
@@ -10,14 +10,14 @@ currently in phase 1
 
 ## Todo List:
 
-[ ] Create models for Student, Payment, Fee
-[ ] Crud operations for all these
-[ ] Showing it in the frontend
+- [ ] Create models for Student, Payment, Fee
+- [ ] Crud operations for all these
+- [ ] Showing it in the frontend
 
 ## Near Future Todo's:
 
-[ ] Implement Attendance, Class models
-[ ] UI for the application
+- [ ] Implement Attendance, Class models
+- [ ] UI for the application
 
 ## 🌟 **Features**
 
