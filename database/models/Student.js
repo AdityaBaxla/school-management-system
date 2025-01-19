@@ -1,34 +1,53 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../sequelize');
+const Payments = require('./Payment')
 
 const Student = sequelize.define('Student', {
-  id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true,
+  folioNumber: {
+    type: DataTypes.STRING,
+    unique: true,
+    allowNull: false,
   },
-  folio_number : {
-    type : DataTypes.NUMBER,
-    unique : true,
-  },
-  admission_number : {
-    type : DataTypes.STRING,
-    unique : true,
-  },
-  class : {
-    // add constrain with regex
-    type : DataTypes.STRING,
-    unique : true,
+  admissionNumber: {
+    type: DataTypes.STRING,
+    unique: true,
+    allowNull: false,
   },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  age: {
+  class: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  section: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  rollNo: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-
+  fatherName: {
+    type: DataTypes.STRING,
+  },
+  motherName: {
+    type: DataTypes.STRING,
+  },
+  aadharNumber: {
+    type: DataTypes.STRING,
+    unique: true,
+  },
+  dateOfAdmission: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
+  status: {
+    type: DataTypes.ENUM('Active', 'Dropout'),
+    defaultValue: 'Active',
+  },
 });
 
-module.exports = Student;
+Student.hasMany(Payment);
+Payment.belongsTo(Student);

@@ -7,7 +7,7 @@ const sequelize = require('../database/sequelize');
 const Student = require('../database/models/Student');
 
 // controller
-const studentController = require('./database/controllers/StudentController');
+const studentController = require('../database/controllers/StudentController');
 let mainWindow;
 
 require('electron-reload')(__dirname, {
@@ -31,10 +31,9 @@ app.on('ready', () => {
     // Load the built Vue app in production
     mainWindow.loadFile(path.join(__dirname, '../renderer/dist/index.html')); 
   }
-});
 
-// creating function that handel invoke from preload.js
-app.whenReady().then(() => {
+  // handelers
+
   ipcMain.handle('test', () => {console.log('test ping') ; return 'test response'})
 
   // Student Controller Calling
@@ -57,7 +56,13 @@ app.whenReady().then(() => {
   ipcMain.handle('student:delete', async (_, id) => {
     return await studentController.deleteStudent(id);
   });
-})
+
+});
+
+// creating function that handel invoke from preload.js
+// app.on('ready', () => {
+  
+// })
 
 
 

@@ -25,7 +25,7 @@ const Fee = sequelize.define('Fee', {
   },
 });
 
-Fee.belongsTo(Student, { foreignKey: 'studentId' });
-Student.hasMany(Fee, { foreignKey: 'studentId' });
+Fee.belongsTo(Student);
+Student.hasMany(Fee);
 
 module.exports = Fee;

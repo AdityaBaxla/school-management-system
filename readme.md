@@ -4,6 +4,21 @@
 
 ---
 
+## 🍇 **Progress**
+
+currently in phase 1
+
+## Todo List:
+
+[ ] Create models for Student, Payment, Fee
+[ ] Crud operations for all these
+[ ] Showing it in the frontend
+
+## Near Future Todo's:
+
+[ ] Implement Attendance, Class models
+[ ] UI for the application
+
 ## 🌟 **Features**
 
 - **CRUD Operations** 📝
