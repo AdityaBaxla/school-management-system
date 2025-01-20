@@ -18,3 +18,15 @@ npm install --save-dev nodemon
 
 app.on('ready', () => {}) // electon 14 and below callback based approach
 app.whenReady().then // newer promise based approach.
+
+### how flow works in electron
+
+- controller will have the sequelize functions for crud
+- main.js will have ipcMain.handle which will call these function and make a handler so that these can be made into api's by preload
+- Preload will make a api bridge to expose these to vue page using a api created by it.
+
+### Associations dependency problem
+
+circular imports causing probmle, does not recoginse that it's sequlieze model. Define all the associations in associations.js
+
+### controllers to check complex validation of data and using external api's.

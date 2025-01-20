@@ -2,7 +2,7 @@
 
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require('../sequelize')
-const Student = require('./Student')
+
 
 class Payment extends Model {
 
@@ -18,6 +18,9 @@ Payment.init(
         amount : {
             type : DataTypes.FLOAT,
             allowNull : false,
+        },
+        paymentType : {
+            type: DataTypes.ENUM('course', 'admission', 'fine', 'extra') // import from a file
         },
         paymentDate : {
             type : DataTypes.DATE,

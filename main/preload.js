@@ -10,6 +10,8 @@ contextBridge.exposeInMainWorld('api', {
   getStudentById: (id) => ipcRenderer.invoke('student:readOne', id),
   updateStudent: (id, data) => ipcRenderer.invoke('student:update', id, data),
   deleteStudent: (id) => ipcRenderer.invoke('student:delete', id),
-})
 
-const a = 'bla'
+  // Fee CRUD
+
+  // Payment CRUD
+})

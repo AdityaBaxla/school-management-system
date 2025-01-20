@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../sequelize');
-const Student = require('./Student');
+
 
 const Fee = sequelize.define('Fee', {
   admissionFees: {
@@ -23,9 +23,9 @@ const Fee = sequelize.define('Fee', {
     type: DataTypes.DATE,
     allowNull: false,
   },
-});
+},
+);
 
-Fee.belongsTo(Student);
-Student.hasMany(Fee);
+
 
 module.exports = Fee;

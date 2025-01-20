@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../sequelize');
-const Payments = require('./Payment')
+
 
 const Student = sequelize.define('Student', {
   folioNumber: {
@@ -49,5 +49,4 @@ const Student = sequelize.define('Student', {
   },
 });
 
-Student.hasMany(Payment);
-Payment.belongsTo(Student);
+module.exports = Student;
