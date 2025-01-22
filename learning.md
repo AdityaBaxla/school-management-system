@@ -30,3 +30,9 @@ app.whenReady().then // newer promise based approach.
 circular imports causing probmle, does not recoginse that it's sequlieze model. Define all the associations in associations.js
 
 ### controllers to check complex validation of data and using external api's.
+
+### electron starting problem
+ error while loading shared libraries: libnss3.so: cannot open shared object file: No such file or directory
+ first update and upgrade
+sudo apt install libnss3-dev
+sudo apt install libasound2
