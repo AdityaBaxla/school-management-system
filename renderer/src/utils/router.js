@@ -4,7 +4,7 @@ import RouterTest from "../components/RouterTest.vue";
 import StudentsView from "../views/StudentsView.vue";
 
 const routes = [
-  { path: "/", component: Home },
+  { path: "/", component: Home, redirect: '/students' },
   { path: "/students", component: StudentsView },
   { path: "/router", component: RouterTest },
 ];

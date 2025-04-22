@@ -7,12 +7,12 @@ const Student = sequelize.define(
     folioNumber: {
       type: DataTypes.STRING,
       unique: true,
-      allowNull: false,
+      // allowNull: false,
     },
     admissionNumber: {
       type: DataTypes.STRING,
       unique: true,
-      allowNull: false,
+      // allowNull: false,
     },
     name: {
       type: DataTypes.STRING,
@@ -20,11 +20,11 @@ const Student = sequelize.define(
     },
     class: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
     section: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
     rollNo: {
       type: DataTypes.INTEGER,
@@ -42,7 +42,7 @@ const Student = sequelize.define(
     },
     dateOfAdmission: {
       type: DataTypes.DATE,
-      allowNull: false,
+      // allowNull: false,
     },
     status: {
       type: DataTypes.ENUM("Active", "Dropout"),

@@ -32,7 +32,12 @@ circular imports causing probmle, does not recoginse that it's sequlieze model. 
 ### controllers to check complex validation of data and using external api's.
 
 ### electron starting problem
- error while loading shared libraries: libnss3.so: cannot open shared object file: No such file or directory
- first update and upgrade
+
+error while loading shared libraries: libnss3.so: cannot open shared object file: No such file or directory
+first update and upgrade
 sudo apt install libnss3-dev
 sudo apt install libasound2
+
+### could not be cloned
+
+vue's proxy object cannot be direcly sent to electron, use spread and objctify to send
