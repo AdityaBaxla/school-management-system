@@ -1,17 +1,17 @@
-import { createMemoryHistory, createRouter } from "vue-router"
-import Home from '../components/Home.vue'
-import RouterTest from '../components/RouterTest.vue'
+import { createMemoryHistory, createRouter } from "vue-router";
+import Home from "../components/Home.vue";
+import RouterTest from "../components/RouterTest.vue";
+import StudentsView from "../views/StudentsView.vue";
 
 const routes = [
-    {path : '/', component : Home},
-    {path : '/router', component : RouterTest},
-
-]
-
+  { path: "/", component: Home },
+  { path: "/students", component: StudentsView },
+  { path: "/router", component: RouterTest },
+];
 
 const router = new createRouter({
-    history : createMemoryHistory(),
-    routes
-})
+  history: createMemoryHistory(),
+  routes,
+});
 
-export default router
+export default router;
