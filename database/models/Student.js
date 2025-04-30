@@ -1,56 +1,26 @@
+// models/Student.js
 const { DataTypes } = require("sequelize");
 const sequelize = require("../sequelize");
 
 const Student = sequelize.define(
   "Student",
   {
-    folioNumber: {
-      type: DataTypes.STRING,
-      unique: true,
-      // allowNull: false,
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    admissionNumber: { type: DataTypes.STRING, unique: true },
+    folioNumber: { type: DataTypes.STRING, allowNull: true, unique: true },
+    firstName: { type: DataTypes.STRING },
+    lastName: { type: DataTypes.STRING },
+    dateOfBirth: { type: DataTypes.DATEONLY, allowNull: true },
+    gender: {
+      type: DataTypes.ENUM("Male", "Female", "Other"),
+      allowNull: true,
     },
-    admissionNumber: {
-      type: DataTypes.STRING,
-      unique: true,
-      // allowNull: false,
-    },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    class: {
-      type: DataTypes.STRING,
-      // allowNull: false,
-    },
-    section: {
-      type: DataTypes.STRING,
-      // allowNull: false,
-    },
-    rollNo: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    fatherName: {
-      type: DataTypes.STRING,
-    },
-    motherName: {
-      type: DataTypes.STRING,
-    },
-    aadharNumber: {
-      type: DataTypes.STRING,
-      unique: true,
-    },
-    dateOfAdmission: {
-      type: DataTypes.DATE,
-      // allowNull: false,
-    },
-    status: {
-      type: DataTypes.ENUM("Active", "Dropout"),
-      defaultValue: "Active",
-    },
+    address: { type: DataTypes.TEXT, allowNull: true },
+    parentContact: { type: DataTypes.STRING, allowNull: true },
   },
   {
-    // tableName: "Student", use this if you want to change the table name
+    tableName: "student",
+    underscored: true,
   }
 );
 

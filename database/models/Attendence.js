@@ -1,8 +1,8 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../sequelize');
-const Student = require('./Student');
+const { DataTypes } = require("sequelize");
+const sequelize = require("../sequelize");
+const Student = require("./Student");
 
-const Attendance = sequelize.define('Attendance', {
+const Attendance = sequelize.define("Attendance", {
   class: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -16,12 +16,12 @@ const Attendance = sequelize.define('Attendance', {
     allowNull: false,
   },
   status: {
-    type: DataTypes.ENUM('Present', 'Absent'),
+    type: DataTypes.ENUM("Present", "Absent"),
     allowNull: false,
   },
 });
 
-Attendance.belongsTo(Student, { foreignKey: 'studentId' });
-Student.hasMany(Attendance, { foreignKey: 'studentId' });
+Attendance.belongsTo(Student, { foreignKey: "studentId" });
+Student.hasMany(Attendance, { foreignKey: "studentId" });
 
 module.exports = Attendance;

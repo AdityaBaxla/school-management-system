@@ -1,23 +1,18 @@
-const {DataTypes, Model} = require('sequelize')
+// models/Class.js
+const { DataTypes: DTClass } = require("sequelize");
+const seqClass = require("../sequelize");
 
-const sequelize = require('../sequelize')
-const Student = require('./Student')
+const Class = seqClass.define(
+  "Class",
+  {
+    id: { type: DTClass.INTEGER, primaryKey: true, autoIncrement: true },
+    name: { type: DTClass.STRING },
+    section: { type: DTClass.STRING, allowNull: true },
+  },
+  {
+    tableName: "class",
+    underscored: true,
+  }
+);
 
-class Class extends Model {
-    static number_of_students(){
-        return Student.count() // change to number of student in that class
-    }
-
-}
-
-Class.init({
-    id : {
-        type : DataTypes.INTEGER,
-        autoIncrement : true,
-        primaryKey : true,
-    },
-    standard : DataTypes.STRING(5),
-    section : DataTypes.STRING(2),
-
-})
-
+module.exports = Class;

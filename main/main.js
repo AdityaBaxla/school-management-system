@@ -6,7 +6,7 @@ const path = require("path");
 const sequelize = require("../database/sequelize");
 
 // associations
-require("../database/associations");
+// require("../database/associations");
 
 // controller
 const studentController = require("../database/controllers/StudentController");

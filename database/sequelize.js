@@ -8,10 +8,6 @@ const sequelize = new Sequelize({
   logging: false, // Disable logging
 });
 
-// importing associations
-
-// require("./associations");
-
 // Test the connection
 (async () => {
   try {
