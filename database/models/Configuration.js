@@ -1,19 +1,12 @@
 // models/Configuration.js
-const { DataTypes: DTConfig } = require("sequelize");
-const seqConfig = require("../sequelize");
+const { DataTypes } = require("sequelize");
+const sequelize = require("../sequelize");
 
-const Configuration = seqConfig.define(
-  "Configuration",
-  {
-    id: { type: DTConfig.INTEGER, primaryKey: true, autoIncrement: true },
-    key: { type: DTConfig.STRING, allowNull: true, unique: true },
-    value: { type: DTConfig.TEXT, allowNull: true },
-    description: { type: DTConfig.TEXT, allowNull: true },
-  },
-  {
-    tableName: "configuration",
-    underscored: true,
-  }
-);
+const Configuration = sequelize.define("Configuration", {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  key: { type: DataTypes.STRING, allowNull: true, unique: true },
+  value: { type: DataTypes.TEXT, allowNull: true },
+  description: { type: DataTypes.TEXT, allowNull: true },
+});
 
 module.exports = Configuration;

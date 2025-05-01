@@ -9,41 +9,34 @@ const FeeStructure = seqFS.define(
   "FeeStructure",
   {
     id: { type: DFS.INTEGER, primaryKey: true, autoIncrement: true },
-    class_id: {
-      type: DFS.INTEGER,
-      allowNull: false,
-      references: { model: ClassFS, key: "id" },
-      onUpdate: "CASCADE",
-      onDelete: "RESTRICT",
-    },
-    academic_year_id: {
-      type: DFS.INTEGER,
-      allowNull: false,
-      references: { model: AcademicYearFS, key: "id" },
-      onUpdate: "CASCADE",
-      onDelete: "RESTRICT",
-    },
-    fee_type_id: {
-      type: DFS.INTEGER,
-      allowNull: false,
-      references: { model: FeeTypeFS, key: "id" },
-      onUpdate: "CASCADE",
-      onDelete: "RESTRICT",
-    },
+    // class_id: {
+    //   type: DFS.INTEGER,
+    //   allowNull: false,
+    //   references: { model: ClassFS, key: "id" },
+    //   onUpdate: "CASCADE",
+    //   onDelete: "RESTRICT",
+    // },
+    // academic_year_id: {
+    //   type: DFS.INTEGER,
+    //   allowNull: false,
+    //   references: { model: AcademicYearFS, key: "id" },
+    //   onUpdate: "CASCADE",
+    //   onDelete: "RESTRICT",
+    // },
+    // fee_type_id: {
+    //   type: DFS.INTEGER,
+    //   allowNull: false,
+    //   references: { model: FeeTypeFS, key: "id" },
+    //   onUpdate: "CASCADE",
+    //   onDelete: "RESTRICT",
+    // },
     amount: { type: DFS.DECIMAL(10, 2), allowNull: false },
     dueDate: { type: DFS.DATEONLY, allowNull: true },
-  },
-  {
-    tableName: "fee_structure",
-    underscored: true,
   }
+  // {
+  //   tableName: "fee_structure",
+  //   underscored: true,
+  // }
 );
-
-FeeStructure.belongsTo(ClassFS, { foreignKey: "class_id", as: "class" });
-FeeStructure.belongsTo(AcademicYearFS, {
-  foreignKey: "academic_year_id",
-  as: "academicYear",
-});
-FeeStructure.belongsTo(FeeTypeFS, { foreignKey: "fee_type_id", as: "feeType" });
 
 module.exports = FeeStructure;

@@ -8,11 +8,11 @@ const FeeType = seqFT.define(
     id: { type: DFT.INTEGER, primaryKey: true, autoIncrement: true },
     name: { type: DFT.STRING, allowNull: true, unique: true },
     description: { type: DFT.TEXT, allowNull: true },
-  },
-  {
-    tableName: "fee_type",
-    underscored: true,
   }
+  // {
+  //   tableName: "fee_type",
+  //   underscored: true,
+  // }
 );
 
 module.exports = FeeType;

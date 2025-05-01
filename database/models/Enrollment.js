@@ -37,18 +37,11 @@ const Enrollment = sequelize.define(
       allowNull: true,
       defaultValue: "active",
     },
-  },
-  {
-    tableName: "enrollments",
-    underscored: true,
   }
+  // {
+  //   tableName: "enrollment",
+  //   underscored: true,
+  // }
 );
-
-Enrollment.belongsTo(StudentE, { foreignKey: "student_id", as: "student" });
-Enrollment.belongsTo(ClassE, { foreignKey: "class_id", as: "class" });
-Enrollment.belongsTo(AcademicYearE, {
-  foreignKey: "academic_year_id",
-  as: "academicYear",
-});
 
 module.exports = Enrollment;

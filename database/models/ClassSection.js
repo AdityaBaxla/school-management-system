@@ -1,5 +1,5 @@
-import { DataTypes } from "sequelize";
-import sequelize from "../sequelize";
+const sequelize = require("../sequelize");
+const { DataTypes } = require("sequelize");
 
 const ClassSection = sequelize.define("ClassSection", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },

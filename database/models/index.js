@@ -12,6 +12,13 @@ const FeeStructure = require("./FeeStructure");
 const FeeInvoice = require("./FeeInvoice");
 const FeePayment = require("./FeePayment");
 
+// make the associations
+Student.belongsTo(ClassSection);
+ClassSection.hasMany(Student);
+
+ClassSection.belongsTo(Class);
+Class.hasMany(ClassSection);
+
 module.exports = {
   sequelize,
   Student,
