@@ -17,6 +17,13 @@ const Student = sequelize.define(
     },
     address: { type: DataTypes.TEXT, allowNull: true },
     parentContact: { type: DataTypes.STRING, allowNull: true },
+    classSectionId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "ClassSection",
+        key: "id",
+      },
+    },
   },
   {
     tableName: "student",

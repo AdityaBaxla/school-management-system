@@ -2,8 +2,8 @@
   <div>
     <h2>All Fees</h2>
     <TableList
-      :items="[{ name: 'why', fees: 20 }]"
-      :columns="['name', 'fees']"
+      :items="fees"
+      :columns="fees ? [] : ['#', 'name', 'amount']"
       :showInputRow="true"
       :title="'Fees'"
       @create-item="onCreate"
@@ -19,7 +19,8 @@ import TableList from "@/components/common/TableList.vue";
 const fees = ref([]);
 
 async function fetchFees() {
-  fees.value = await api.fees.getAll();
+  fees.value = await api.fee.getAll();
+  // console.log(res.dataValues);
 }
 
 // async function getFees(){
@@ -33,7 +34,8 @@ async function fetchFees() {
 // }
 
 function onCreate(payload) {
-  api.fees.create(payload).then(() => {
+  console.log("Creating fee:", payload);
+  api.fee.create(payload).then(() => {
     fetchFees();
   });
 }

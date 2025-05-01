@@ -1,42 +1,39 @@
 // models/Enrollment.js
-const { DataTypes: DTE } = require("sequelize");
-const seqEnroll = require("../sequelize");
-const StudentE = require("./Student");
-const ClassE = require("./Class");
-const AcademicYearE = require("./AcademicYear");
+const { DataTypes: DataTypes } = require("sequelize");
+const sequelize = require("../sequelize");
 
-const Enrollment = seqEnroll.define(
+const Enrollment = sequelize.define(
   "Enrollment",
   {
-    id: { type: DTE.INTEGER, primaryKey: true, autoIncrement: true },
-    student_id: {
-      type: DTE.INTEGER,
-      allowNull: true,
-      references: { model: StudentE, key: "id" },
-      onUpdate: "CASCADE",
-      onDelete: "CASCADE",
-    },
-    class_id: {
-      type: DTE.INTEGER,
-      allowNull: true,
-      references: { model: ClassE, key: "id" },
-      onUpdate: "CASCADE",
-      onDelete: "RESTRICT",
-    },
-    academic_year_id: {
-      type: DTE.INTEGER,
-      allowNull: true,
-      references: { model: AcademicYearE, key: "id" },
-      onUpdate: "CASCADE",
-      onDelete: "RESTRICT",
-    },
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    // studentId: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: true,
+    //   references: { model: 'Student', key: "id" },
+    //   onUpdate: "CASCADE",
+    //   onDelete: "CASCADE",
+    // },
+    // classSectionId: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: true,
+    //   references: { model: ClassE, key: "id" },
+    //   onUpdate: "CASCADE",
+    //   onDelete: "RESTRICT",
+    // },
+    // academic_year_id: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: true,
+    //   references: { model: AcademicYearE, key: "id" },
+    //   onUpdate: "CASCADE",
+    //   onDelete: "RESTRICT",
+    // },
     enrollmentDate: {
-      type: DTE.DATEONLY,
+      type: DataTypes.DATEONLY,
       allowNull: true,
-      defaultValue: DTE.NOW,
+      defaultValue: DataTypes.NOW,
     },
     status: {
-      type: DTE.ENUM("active", "graduated", "withdrawn"),
+      type: DataTypes.ENUM("active", "graduated", "withdrawn"),
       allowNull: true,
       defaultValue: "active",
     },

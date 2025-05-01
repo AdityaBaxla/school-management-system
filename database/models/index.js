@@ -3,6 +3,7 @@ const sequelize = require("../sequelize");
 
 const Student = require("./Student");
 const Class = require("./Class");
+const ClassSection = require("./ClassSection");
 const AcademicYear = require("./AcademicYear");
 const Configuration = require("./Configuration");
 const Enrollment = require("./Enrollment");
@@ -11,12 +12,11 @@ const FeeStructure = require("./FeeStructure");
 const FeeInvoice = require("./FeeInvoice");
 const FeePayment = require("./FeePayment");
 
-// Cross-model associations are set in each model where needed.
-
 module.exports = {
   sequelize,
   Student,
   Class,
+  ClassSection,
   AcademicYear,
   Configuration,
   Enrollment,

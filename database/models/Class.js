@@ -1,13 +1,20 @@
-// models/Class.js
-const { DataTypes: DTClass } = require("sequelize");
-const seqClass = require("../sequelize");
+// a generic model which will be used to create a class-section table every academic year
+const { DataTypes: DataTypes } = require("sequelize");
+const sequelize = require("../sequelize");
 
-const Class = seqClass.define(
+const Class = sequelize.define(
   "Class",
   {
-    id: { type: DTClass.INTEGER, primaryKey: true, autoIncrement: true },
-    name: { type: DTClass.STRING },
-    section: { type: DTClass.STRING, allowNull: true },
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    name: { type: DataTypes.STRING },
+    displayOrder: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    isActive: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    },
   },
   {
     tableName: "class",

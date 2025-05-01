@@ -9,7 +9,7 @@ async function createFee(data) {
 
 // Get all students
 async function getAllFee() {
-  return await Fee.findAll();
+  return await FeeStructure.findAll({ raw: true });
 }
 
 // Get a fee by ID
