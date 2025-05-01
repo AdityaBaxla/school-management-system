@@ -3,7 +3,18 @@ const path = require("path");
 
 // database
 
-const sequelize = require("../database/sequelize");
+const { sequelize } = require("../database/models");
+
+// sync should be in sequilize.js file
+(async () => {
+  try {
+    // Sync models with the database (creating the models)
+    await sequelize.sync({ alter: true }); // `alter` ensures the database schema matches models
+    console.log("Database synchronized successfully.");
+  } catch (error) {
+    console.error("Error synchronizing the database:", error);
+  }
+})();
 
 // associations
 // require("../database/associations");
@@ -110,14 +121,3 @@ app.on("ready", () => {
 // app.on('ready', () => {
 
 // })
-
-// sync should be in sequilize.js file
-(async () => {
-  try {
-    // Sync models with the database (creating the models)
-    await sequelize.sync({ alter: true }); // `alter` ensures the database schema matches models
-    console.log("Database synchronized successfully.");
-  } catch (error) {
-    console.error("Error synchronizing the database:", error);
-  }
-})();
