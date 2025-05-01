@@ -46,7 +46,7 @@ app.on("ready", () => {
     mainWindow.loadFile(path.join(__dirname, "../renderer/dist/index.html"));
   }
 
-  // handelers
+  // handlers
 
   ipcMain.handle("test", () => {
     console.log("test ping");

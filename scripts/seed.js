@@ -9,6 +9,7 @@ const {
   FeeStructure,
   FeeInvoice,
   FeePayment,
+  ClassSection,
 } = require("../database/models");
 
 async function seed() {
@@ -24,16 +25,18 @@ async function seed() {
       endDate: "2025-05-31",
     });
 
-    const grade1 = await Class.create({ name: "Grade 1", section: "A" });
-    const grade2 = await Class.create({ name: "Grade 2", section: "B" });
-
-    const tuition = await FeeType.create({
-      name: "Tuition",
-      description: "Tuition fees",
+    const class1 = await Class.create({ name: "X", display_order: 1 });
+    const classSection1 = await ClassSection.create({
+      name: "A",
+      displayOrder: 1,
+      classId: class1.id,
+      capacity: 30,
     });
-    const activity = await FeeType.create({
-      name: "Activity",
-      description: "Extra-curricular fees",
+    const classSection2 = await ClassSection.create({
+      name: "B",
+      displayOrder: 2,
+      classId: class1.id,
+      capacity: 30,
     });
 
     await FeeStructure.bulkCreate([

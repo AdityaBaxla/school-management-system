@@ -88,6 +88,18 @@ const error = ref(null);
 const creating = ref(false);
 const newStudent = ref({ firstName: "", age: null, roll_no: null, class: "" });
 
+const displayFields = [
+  { label: "Name", value: "first_name" },
+  { label: "Admission #", value: "admission_number" },
+  // { label: "Age", value: "age" },
+  { label: "Section", value: "section" },
+  { label: "Adhaar No.", value: "adhaarNo" },
+  { label: "Date of Admission", value: "dateOfAdmission" },
+  { label: "Status", value: "status" },
+  { label: "Roll No.", value: "rollNo" },
+  { label: "Class", value: "class" },
+];
+
 async function fetchStudents() {
   loading.value = true;
   error.value = null;
