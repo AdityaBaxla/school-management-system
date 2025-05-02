@@ -5,15 +5,25 @@ import StudentsView from "../views/StudentsView.vue";
 import FeesView from "@/views/FeesView.vue";
 import FeesDataView from "@/views/FeesDataView.vue";
 import StudentsViewOld from "@/views/StudentViewOld.vue";
+import path from "path";
+
+import DashboardLayout from "../layouts/DashboardLayout.vue";
 
 const routes = [
-  { path: "/", component: Home, redirect: "/students" },
-  { path: "/home", component: Home },
-  { path: "/students", component: StudentsView },
-  { path: "/router", component: RouterTest },
-  { path: "/fees", component: FeesView },
-  { path: "/fees-data", component: FeesDataView },
-  { path: "/old-students", component: StudentsViewOld },
+  { path: "/", component: Home, redirect: "/dashboard/students" },
+  {
+    path: "/dashboard",
+    component: DashboardLayout,
+    children: [
+      { path: "", component: Home, redirect: "students" },
+      { path: "home", component: Home },
+      { path: "students", component: StudentsView },
+      { path: "router", component: RouterTest },
+      { path: "fees", component: FeesView },
+      { path: "fees-data", component: FeesDataView },
+      { path: "old-students", component: StudentsViewOld },
+    ],
+  },
 ];
 
 const router = new createRouter({

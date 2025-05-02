@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base{
+  body {
+    background-color: white !important;
+    color: black;
+  }
+}
+#app {
+  background-color: white !important;
+}
+
+
+
 @layer base {
   :root {
     --background: 0 0% 100%;

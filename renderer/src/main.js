@@ -5,6 +5,11 @@ import router from "./utils/router.js";
 import PrimeVue from "primevue/config";
 import Aura from "@primeuix/themes/aura";
 
+// // 2nd import
+// import "primevue/resources/themes/lara-light-indigo/theme.css";
+// import "primevue/resources/primevue.min.css";
+import "primeicons/primeicons.css";
+
 import ApiPlugin from "@/plugins/api.js"; // injected this.api to call api's from components
 
 import Button from "primevue/button";

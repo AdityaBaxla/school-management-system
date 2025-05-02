@@ -3,15 +3,7 @@
     <div class="card">
       <!-- Create Button -->
       <div class="flex justify-content-between mb-3">
-        <Button
-          icon="pi pi-plus"
-          label="Create"
-          @click="toggleCreateMode"
-          :class="{
-            'p-button-success': !createMode,
-            'p-button-secondary': createMode,
-          }"
-        />
+        <Button label="Create" @click="toggleCreateMode" :class="{}" />
       </div>
 
       <!-- DataTable with integrated create form -->
@@ -22,6 +14,7 @@
         v-model:editingRows="editingRows"
         @row-edit-save="onRowEditSave"
         ref="dataTable"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
       >
         <template v-for="col in normalizedColumns" :key="col.field">
           <Column :field="col.field" :header="col.header">
@@ -38,7 +31,6 @@
                   optionValue="value"
                   placeholder="Select"
                   class="w-full"
-                  @keydown.enter="createItem"
                   @keydown.tab="focusNextInput($event, col.field)"
                   ref="inputRefs"
                 />
@@ -80,8 +72,9 @@
               <!-- Skip the newItemData row -->
               <template v-if="data !== newItemData">
                 <div :key="`editor-${data.id}-${field}`">
+                  <div v-if="!col.editable">-</div>
                   <Select
-                    v-if="col.type === 'dropdown'"
+                    v-else-if="col.type === 'dropdown'"
                     v-model="editData[data.id][field]"
                     :options="col.options"
                     optionLabel="label"
@@ -118,13 +111,8 @@
               v-if="createMode && slotProps.data === newItemData"
               class="flex justify-content-center"
             >
-              <Button label="Save" icon="pi pi-check" @click="createItem" />
-              <Button
-                label="Cancel"
-                icon="pi pi-times"
-                text
-                @click="cancelCreate"
-              />
+              <Button label="Save" @click="createItem" />
+              <Button label="Cancel" text @click="cancelCreate" />
             </div>
             <!-- Normal row editor buttons will be handled by rowEditor -->
           </template>
