@@ -2,4 +2,18 @@
 
 ### Props accepted
 
-columns = [ {field , title, sortable(default=true), style (string with inline style)}]
+columns=[
+      { field: 'name', header: 'Name' },
+      { field: 'email', header: 'Email' },
+      {
+        field: 'role',
+        header: 'Role',
+        sortable: false,
+        type: 'dropdown',
+        options: [
+          { label: 'Admin', value: 1 },
+          { label: 'User', value: 2 },
+        ],
+      },
+
+data = [ {field1, field2, ...}]
