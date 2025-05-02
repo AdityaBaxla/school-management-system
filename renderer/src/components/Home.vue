@@ -1,3 +1,5 @@
 <template>
-  <h1>Home</h1>
+  <div class="card flex justify-center">
+    <Button label="Verify" />
+  </div>
 </template>

@@ -1,3 +1,4 @@
+const { access } = require("fs");
 const {
   sequelize,
   Student,
@@ -23,9 +24,10 @@ async function seed() {
       name: "2024-2025",
       startDate: "2024-06-01",
       endDate: "2025-05-31",
+      code: "AY2024",
     });
 
-    const class1 = await Class.create({ name: "X", display_order: 1 });
+    const class1 = await Class.create({ name: "X", displayOrder: 1 });
     const classSection1 = await ClassSection.create({
       name: "A",
       displayOrder: 1,
@@ -38,25 +40,6 @@ async function seed() {
       classId: class1.id,
       capacity: 30,
     });
-
-    await FeeStructure.bulkCreate([
-      {
-        class_id: grade1.id,
-        academic_year_id: ay.id,
-        fee_type_id: tuition.id,
-        amount: 1000,
-        dueDate: "2024-07-15",
-      },
-      {
-        class_id: grade1.id,
-        academic_year_id: ay.id,
-        fee_type_id: activity.id,
-        amount: 200,
-        dueDate: "2024-07-15",
-      },
-    ]);
-
-    // 3) Create a student & enrollment
     const student = await Student.create({
       admissionNumber: "ADM001",
       folioNumber: "FOL1001",
@@ -64,30 +47,57 @@ async function seed() {
       lastName: "Doe",
       dateOfBirth: "2015-08-15",
       gender: "Male",
+      address: "Pune, Cityville",
     });
 
-    const enrollment = await Enrollment.create({
-      student_id: student.id,
-      class_id: grade1.id,
-      academic_year_id: ay.id,
+    const enrollement1 = await Enrollment.create({
+      enrollmentDate: new Date(),
+      status: "active",
+      studentId: student.id,
+      classSectionId: classSection1.id,
+      academicYearId: ay.id,
     });
+    // await FeeStructure.bulkCreate([
+    //   {
+    //     class_id: grade1.id,
+    //     academic_year_id: ay.id,
+    //     fee_type_id: tuition.id,
+    //     amount: 1000,
+    //     dueDate: "2024-07-15",
+    //   },
+    //   {
+    //     class_id: grade1.id,
+    //     academic_year_id: ay.id,
+    //     fee_type_id: activity.id,
+    //     amount: 200,
+    //     dueDate: "2024-07-15",
+    //   },
+    // ]);
 
-    // 4) Invoice + payment
-    const invoice = await FeeInvoice.create({
-      student_id: student.id,
-      enrollment_id: enrollment.id,
-      invoiceDate: new Date(),
-      totalAmount: 1200,
-      status: "pending",
-    });
+    // 3) Create a student & enrollment
 
-    await FeePayment.create({
-      fee_invoice_id: invoice.id,
-      paymentDate: new Date(),
-      amountPaid: 1200,
-      paymentMethod: "Cash",
-      transactionReference: "TXN123ABC",
-    });
+    // const enrollment = await Enrollment.create({
+    //   student_id: student.id,
+    //   class_id: grade1.id,
+    //   academic_year_id: ay.id,
+    // });
+
+    // // 4) Invoice + payment
+    // const invoice = await FeeInvoice.create({
+    //   student_id: student.id,
+    //   enrollment_id: enrollment.id,
+    //   invoiceDate: new Date(),
+    //   totalAmount: 1200,
+    //   status: "pending",
+    // });
+
+    // await FeePayment.create({
+    //   fee_invoice_id: invoice.id,
+    //   paymentDate: new Date(),
+    //   amountPaid: 1200,
+    //   paymentMethod: "Cash",
+    //   transactionReference: "TXN123ABC",
+    // });
 
     console.log("✔️ Dummy data has been populated.");
     process.exit(0);

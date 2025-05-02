@@ -25,8 +25,13 @@ const feeController = require("../database/controllers/FeeController");
 const paymentController = require("../database/controllers/PaymentController");
 let mainWindow;
 
+// Use electron reload to hot reload the backend
+console.log(">>> Electron main process started");
+
+const electronPath = require("electron").path;
 require("electron-reload")(__dirname, {
-  electron: path.join(__dirname, "../node_modules/.bin/electron"),
+  electron: electronPath,
+  hardResetMethod: "exit",
 });
 
 app.on("ready", () => {
@@ -74,8 +79,8 @@ app.on("ready", () => {
     return await studentController.deleteStudent(id);
   });
 
-  // handler for Fee
   ipcMain.handle("fee:create", async (_, data) => {
+    // handler forß Fee
     return await feeController.createFee(data);
   });
 

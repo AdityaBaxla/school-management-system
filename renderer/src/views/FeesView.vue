@@ -3,9 +3,9 @@
     <h2>All Fees</h2>
     <TableList
       :items="fees"
-      :columns="fees ? [] : ['#', 'name', 'amount']"
+      :columnsConfig="feeColumnsConfig"
       :showInputRow="true"
-      :title="'Fees'"
+      title="Fees"
       @create-item="onCreate"
     />
   </div>
@@ -18,24 +18,43 @@ import TableList from "@/components/common/TableList.vue";
 
 const fees = ref([]);
 
+const academicYears = ref([
+  { name: "2023-2024", id: 1 },
+  { name: "2024-2025", id: 2 },
+]);
+const feeTypes = ref([
+  { name: "Tuition", id: 1 },
+  { name: "Library", id: 2 },
+  { name: "Sports", id: 3 },
+]);
+
+const feeColumnsConfig = {
+  name: { label: "Name", type: "text" },
+  amount: { label: "Amount", type: "number" },
+  feeTypeId: {
+    label: "Fee Type",
+    type: "select",
+    options: feeTypes.value.map((f) => ({ label: f.name, value: f.id })),
+  },
+  academicYearName: {
+    label: "Academic Year",
+    type: "select",
+    options: academicYears.value.map((y) => ({ label: y.name, value: y.id })),
+  },
+};
+
 async function fetchFees() {
   fees.value = await api.fee.getAll();
-  // console.log(res.dataValues);
+  console.log(fees.value);
 }
 
-// async function getFees(){
-//   try {
-//     const res = await api.fees.getAll();
-//     console.log(res);
-//     fees.value = res;
-//   } catch (err) {
-//     console.error(err);
-//   }
-// }
-
 function onCreate(payload) {
-  console.log("Creating fee:", payload);
-  api.fee.create(payload).then(() => {
+  const filteredPayload = {};
+  Object.keys(feeColumnsConfig).forEach((key) => {
+    if (payload[key] !== undefined) filteredPayload[key] = payload[key];
+  });
+
+  api.fee.create(filteredPayload).then(() => {
     fetchFees();
   });
 }
