@@ -18,10 +18,7 @@ import { ref, onMounted } from "vue";
 import PrimeCrudTable from "@/components/common/PrimeCrudTable.vue";
 import api from "@/services/api";
 
-const students = ref([
-  { id: 1, name: "dummy", age: 10, class: "X" },
-  { id: 2, name: "bunny", age: 20, class: "V" },
-]);
+const students = ref([]);
 const loading = ref(false);
 const error = ref(null);
 const creating = ref(false);
@@ -29,17 +26,17 @@ const newStudent = ref({ firstName: "", age: null, roll_no: null, class: "" });
 
 const displayFields = [
   { header: "ID", field: "id", editable: false },
-  { header: "Name", field: "name" },
+  // { header: "Name", field: "name" },
   { header: "First Name", field: "firstName" },
   { header: "Last Name", field: "lastName" },
   { header: "Admission #", field: "admissionNumber" },
   { header: "Class Section", field: "section" },
-  { header: "Adhaar No.", field: "adhaarNo" },
-  { header: "Date of Admission", field: "dateOfAdmission" },
-  { header: "Date of Birth", field: "dateOfBirth" },
-  { header: "Status", field: "status" },
-  { header: "Roll No.", field: "rollNo" },
-  { header: "Parent #", field: "parentContact" },
+  // { header: "Adhaar No.", field: "adhaarNo" },
+  // { header: "Date of Admission", field: "dateOfAdmission" },
+  // { header: "Date of Birth", field: "dateOfBirth" },
+  // { header: "Status", field: "status" },
+  // { header: "Roll No.", field: "rollNo" },
+  // { header: "Parent #", field: "parentContact" },
 ];
 
 async function fetchStudents() {
@@ -79,7 +76,7 @@ async function editStudent(student) {
   try {
     // this returns the created student object (or throws)
     console.log("Editing student with data:", student);
-    const edited = await api.student.update({ ...student });
+    const edited = await api.student.update(student.id, { ...student });
 
     // update your local list in‐place, or re-fetch
     // students.value.push(created);
