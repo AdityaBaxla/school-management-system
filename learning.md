@@ -41,3 +41,7 @@ sudo apt install libasound2
 ### could not be cloned
 
 vue's proxy object cannot be direcly sent to electron, use spread and objctify to send
+
+
+### prime vue save update issue
+directly taking props and using saveedit event on prime vue chart not getting new data, create your custom implemntation

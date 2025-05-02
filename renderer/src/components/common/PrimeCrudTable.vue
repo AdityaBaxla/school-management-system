@@ -29,8 +29,9 @@
             <template #body="slotProps">
               <!-- Create Mode first row -->
               <div v-if="createMode && slotProps.data === newItemData">
+                <div v-if="!col.editable">-</div>
                 <Select
-                  v-if="col.type === 'dropdown'"
+                  v-else-if="col.type === 'dropdown'"
                   v-model="newItemData[col.field]"
                   :options="col.options"
                   optionLabel="label"
@@ -104,12 +105,7 @@
         </template>
 
         <!-- Action Column -->
-        <!-- <Column
-          :rowEditor="true"
-          style="width: 10%; min-width: 8rem"
-          bodyStyle="text-align:center"
-          header="Actions"
-        ></Column> -->
+
         <Column
           :rowEditor="!createMode"
           style="width: 10%; min-width: 8rem"
@@ -235,6 +231,7 @@ const normalizedColumns = computed(() =>
     ...col,
     type: col.type || "text",
     options: col.options || [],
+    editable: col.editable === false ? false : true,
   }))
 );
 
